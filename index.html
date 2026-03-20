@@ -3,291 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morais, Mayelen e Farias | Advocacia</title>
+    <title>Morais, Mayelen & Farias | Advocacia</title>
+    <!-- Font Awesome para ícones (estilo do exemplo) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            font-family: 'Segoe UI', 'Georgia', Roboto, system-ui, sans-serif;
         }
 
         body {
-            background-color: #0f3b2b; /* verde escuro principal */
-            min-height: 100vh;
+            background-color: #0B1E33; /* azul escuro profundo */
+            color: #f0f5fa;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* cabeçalho / navegação simples (inspirado no modelo) */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid #1e3a5f;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .brand span {
+            color: #b7d9f0;
+            font-weight: 300;
+        }
+
+        .menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .menu a {
+            color: #e0edf5;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .menu a:hover {
+            border-bottom-color: #7aadf0;
+            color: white;
+        }
+
+        /* título principal */
+        .hero {
+            text-align: center;
+            margin: 2.5rem 0 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto 0.8rem;
+        }
+
+        .hero .sub {
+            font-size: 1.3rem;
+            color: #b0cde0;
+            font-style: italic;
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background: #2b5783;
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* cards de advogados - grid fluido */
+        .lawyers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.2rem;
+            margin: 3rem 0 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(2px);
+            border: 1px solid #1e4a76;
+            border-radius: 28px;
+            padding: 2rem 1.5rem 1.8rem;
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.3s;
+            box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 30px -8px #030e1a;
+            border-color: #3e78b2;
+        }
+
+        /* espaço para foto (simulada com ícone grande + fundo) */
+        .foto-adv {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 1.2rem;
+            background: linear-gradient(145deg, #1e3f60, #0b2a42);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            border: 3px solid #a0c4e8;
+            box-shadow: 0 8px 0 #08202e;
         }
 
-        /* Card principal que simula um papel pautado/textura suave */
-        .landing-card {
-            max-width: 1100px;
-            width: 100%;
-            background: #eaf4e5;   /* off-white levemente esverdeado para contraste suave */
-            border-radius: 32px;
-            box-shadow: 0 25px 40px -10px rgba(0, 20, 0, 0.7);
-            overflow: hidden;
-            padding: 2.8rem 2.5rem;
-            border: 2px solid #1d5e45;
+        .foto-adv i {
+            font-size: 4.2rem;
+            color: #e1effa;
+            filter: drop-shadow(2px 4px 4px #0a1e2e);
         }
 
-        /* elementos em verde escuro */
-        .green-dark-text {
-            color: #0f3b2b;
+        .card h3 {
+            font-size: 1.9rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 0.25rem;
         }
 
-        .title-section h1 {
-            font-size: 2.4rem;
-            font-weight: 600;
-            line-height: 1.2;
-            color: #0a2e20;
-            border-left: 8px solid #1f6e4f;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .subhead {
-            color: #2b5d48;
-            font-size: 1.2rem;
+        .card .area {
+            color: #9dc1e0;
             font-weight: 400;
-            margin: 0.8rem 0 2rem 1.8rem;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
             letter-spacing: 0.3px;
         }
 
-        /* Área de dois blocos principais */
-        .botoes-destaque {
+        .card p {
+            color: #ccdeee;
+            font-size: 1rem;
+            margin-bottom: 1.8rem;
+            border-top: 1px dashed #2e5680;
+            padding-top: 1rem;
+        }
+
+        /* ícones sociais (linkedin, email) */
+        .social-mini {
+            display: flex;
+            justify-content: center;
+            gap: 1.4rem;
+            font-size: 1.3rem;
+            color: #b6d6f5;
+        }
+
+        .social-mini a {
+            color: #c3dcf5;
+            transition: 0.2s;
+        }
+
+        .social-mini a:hover {
+            color: white;
+            transform: scale(1.15);
+        }
+
+        /* dois blocos de ação: whatsapp e conheça o escritório */
+        .botoes-acoes {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
-            margin: 2.8rem 0 2rem 0;
-            justify-content: space-between;
+            justify-content: center;
+            margin: 4rem 0 2rem;
         }
 
-        .card-acao {
-            flex: 1 1 250px;
-            background: white;
-            border-radius: 24px;
-            padding: 2rem 1.8rem;
-            box-shadow: 0 8px 0 #1d5e45, 0 12px 20px -8px rgba(15, 59, 43, 0.3);
-            border: 1px solid #1d5e45;
-            transition: transform 0.15s ease;
-        }
-
-        .card-acao:hover {
-            transform: translateY(-3px);
-        }
-
-        /* ícone genérico (emojis / texto) */
-        .icone-grande {
-            font-size: 2.8rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .card-acao h3 {
-            font-size: 1.9rem;
-            font-weight: 600;
-            color: #0f3b2b;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .card-acao p {
-            color: #1f4d3a;
-            margin-bottom: 1.7rem;
-            font-size: 1.1rem;
-        }
-
-        /* botão estilo whatsapp */
-        .btn-whatsapp {
+        .btn-whatsapp, .btn-escritorio {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem;
-            background-color: #25D366;  /* verde WhatsApp */
-            color: white;
-            font-weight: 600;
-            font-size: 1.2rem;
-            padding: 0.9rem 1.5rem;
+            gap: 0.8rem;
+            padding: 1rem 2.2rem;
             border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.25rem;
             text-decoration: none;
+            transition: 0.2s;
             border: none;
-            box-shadow: 0 5px 0 #128C7E, 0 8px 14px rgba(0,0,0,0.15);
-            transition: all 0.1s ease;
-            width: fit-content;
-            border: 1px solid #0f6b58;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp {
+            background: #1ebea5;  /* tom moderno do whatsapp */
+            color: #0B1E33;
+            box-shadow: 0 6px 0 #0d6b5c, 0 10px 18px -6px black;
+        }
+
+        .btn-whatsapp i {
+            font-size: 1.8rem;
         }
 
         .btn-whatsapp:hover {
-            background-color: #20b859;
-            box-shadow: 0 3px 0 #128C7E, 0 8px 14px rgba(0,0,0,0.1);
+            background: #13a58b;
             transform: translateY(2px);
+            box-shadow: 0 4px 0 #0d6b5c, 0 10px 18px -6px black;
         }
 
-        .btn-whatsapp span {
+        .btn-escritorio {
+            background: transparent;
+            color: white;
+            border: 2px solid #3e78b2;
+            box-shadow: 0 6px 0 #103456;
+        }
+
+        .btn-escritorio i {
             font-size: 1.5rem;
         }
 
-        /* botão corpo jurídico */
-        .btn-juridico {
-            display: inline-block;
-            background-color: transparent;
-            color: #0f3b2b;
-            font-weight: 600;
-            font-size: 1.25rem;
-            padding: 0.8rem 2rem;
-            border-radius: 40px;
-            border: 3px solid #1d6e4f;
-            text-decoration: none;
-            box-shadow: 0 4px 0 #0a3523;
-            transition: all 0.1s ease;
-        }
-
-        .btn-juridico:hover {
-            background-color: #1d6e4f;
-            color: white;
-            border-color: #0f3b2b;
-            box-shadow: 0 2px 0 #0a3523;
+        .btn-escritorio:hover {
+            background: #1c3f60;
+            border-color: #7aadf0;
             transform: translateY(2px);
+            box-shadow: 0 4px 0 #103456;
         }
 
-        /* selo/escritório adicional */
+        /* rodapé elegante */
         .footer-info {
-            margin-top: 3rem;
-            border-top: 2px dashed #1d6e4f;
-            padding-top: 1.8rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1e4870;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            color: #1d5e45;
+            color: #aac3db;
         }
 
-        .tag-escritorio {
-            background: #1d6e4f;
-            color: #f1f9f1;
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .contato-direto {
+        .contato-rapido {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.05rem;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
-        .contato-direto a {
-            color: #0f3b2b;
-            font-weight: 600;
+        .contato-rapido a {
+            color: #b7d5f0;
             text-decoration: none;
-            border-bottom: 2px solid #1d6e4f;
+            border-bottom: 1px dotted;
         }
 
-        .contato-direto a:hover {
-            color: #1d6e4f;
+        .copy {
+            font-size: 0.95rem;
         }
 
-        @media (max-width: 680px) {
-            .landing-card {
-                padding: 1.8rem 1.2rem;
+        /* utilitários para flow */
+        .flow > * + * {
+            margin-top: var(--flow, 1rem);
+        }
+
+        /* responsividade */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.8rem;
             }
-            .title-section h1 {
-                font-size: 1.9rem;
-                padding-left: 1rem;
+            .menu {
+                gap: 1.5rem;
             }
-            .card-acao h3 {
-                font-size: 1.6rem;
+            .hero h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="landing-card">
-        <!-- cabeçalho com nome completo do escritório -->
-        <div class="title-section">
-            <h1>Morais, Mayelen <br>e Farias Advocacia</h1>
-            <div class="subhead">✻ Consultoria Jurídica · Ética & Resultados ✻</div>
+
+    <!-- barra de navegação sutil (inspirada no modelo) -->
+    <nav class="navbar container">
+        <a href="#" class="brand">Morais, <span>Mayelen & Farias</span></a>
+        <ul class="menu">
+            <li class="item"><a href="#">Escritório</a></li>
+            <li class="item"><a href="#">Corpo Jurídico</a></li>
+            <li class="item"><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- título principal da landing -->
+    <div class="container">
+        <div class="hero">
+            <h1>Morais, Mayelen e Farias <br> Advocacia e Consultoria Jurídica</h1>
+            <div class="sub">Estratégia, ética e compromisso com seus direitos</div>
+            <div class="divider"></div>
         </div>
 
-        <!-- dois blocos principais: whatsapp e corpo jurídico -->
-        <div class="botoes-destaque">
-            <!-- Bloco 1: Agendar atendimento (WhatsApp) -->
-            <div class="card-acao">
-                <div class="icone-grande">⚖️📲</div>
-                <h3>Atendimento<br>imediato</h3>
-                <p>Fale agora com nossa equipe e agende uma reunião virtual ou presencial. Resposta rápida e sigilosa.</p>
-                <!-- link whatsapp (número fictício) -->
-                <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20com%20a%20advocacia%20Morais%2C%20Mayelen%20e%20Farias" 
-                   class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
-                   <span>📱</span> Agendar via WhatsApp
-                </a>
+        <!-- SEÇÃO CORPO JURÍDICO: 3 advogados com foto (ícone) -->
+        <div style="margin-top: 2rem;">
+            <h2 style="font-size: 2.2rem; font-weight: 400; color: white; border-left: 6px solid #3e78b2; padding-left: 1.5rem;">
+                ⚖️ Conheça nosso corpo jurídico
+            </h2>
+        </div>
+
+        <!-- grid de 3 advogados (fotos simuladas por ícones, mas visual elegante) -->
+        <div class="lawyers-grid">
+            <!-- Advogado 1: Dr. Morais -->
+            <div class="card flow" style="--flow: 0.8rem">
+                <div class="foto-adv">
+                    <i class="fas fa-user-tie"></i> <!-- ícone como placeholder da foto -->
+                </div>
+                <h3>Dr. Rafael Morais</h3>
+                <div class="area">Sócio · Direito Cível e Contratos</div>
+                <p>Especialista em resolução de conflitos patrimoniais e contratos empresariais. Mais de 15 anos de experiência.</p>
+                <div class="social-mini">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+                    <a href="#" aria-label="Currículo Lattes"><i class="fas fa-scroll"></i></a>
+                </div>
             </div>
 
-            <!-- Bloco 2: Conheça nosso corpo jurídico -->
-            <div class="card-acao">
-                <div class="icone-grande">👥📜</div>
-                <h3>Corpo Jurídico<br>especializado</h3>
-                <p>Conheça os sócios e colaboradores: Dra. Mayelen, Dr. Morais, Dr. Farias e equipe. Áreas trabalhista, cível, empresarial.</p>
-                <!-- link interno simbólico (apenas demonstração, ancora para uma seção fictícia) -->
-                <a href="#equipe" class="btn-juridico" onclick="alert('Página do corpo jurídico (simulação) – em breve perfil completo dos advogados.'); return false;">✦ Conheça nosso time ✦</a>
+            <!-- Advogada 2: Dra. Mayelen -->
+            <div class="card flow" style="--flow: 0.8rem">
+                <div class="foto-adv">
+                    <i class="fas fa-user-tie" style="transform: scale(1.1);"></i>
+                </div>
+                <h3>Dra. Mayelen C. Morais</h3>
+                <div class="area">Sócia · Trabalhista e Previdenciário</div>
+                <p>Atuação forte em causas trabalhistas e revisão de benefícios. Doutora em Direito do Trabalho pela USP.</p>
+                <div class="social-mini">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                    <a href="#"><i class="fas fa-scroll"></i></a>
+                </div>
+            </div>
+
+            <!-- Advogado 3: Dr. Farias -->
+            <div class="card flow" style="--flow: 0.8rem">
+                <div class="foto-adv">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Dr. Otávio Farias</h3>
+                <div class="area">Sócio · Empresarial & Tributário</div>
+                <p>Consultor de médias e grandes empresas em planejamento tributário e direito societário. LL.M. em Direito dos Negócios.</p>
+                <div class="social-mini">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                    <a href="#"><i class="fas fa-scroll"></i></a>
+                </div>
             </div>
         </div>
 
-        <!-- rodapé com informações de contato direto e selo de confiança -->
+        <!-- Área de contato (whatsapp + link para corpo jurídico) -->
+        <div class="botoes-acoes">
+            <!-- Botão whatsapp para agendar atendimento -->
+            <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20com%20a%20advocacia%20Morais%2C%20Mayelen%20e%20Farias" 
+               class="btn-whatsapp" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> Agendar atendimento
+            </a>
+
+            <!-- Botão / link para conhecer corpo jurídico (já estamos na seção, mas pode reforçar) -->
+            <a href="#" class="btn-escritorio" onclick="document.getElementById('corpo-juridico').scrollIntoView({behavior:'smooth'}); return false;">
+                <i class="fas fa-users"></i> Conheça nosso corpo jurídico
+            </a>
+        </div>
+
+        <!-- âncora para o botão acima (já na grade) -->
+        <div id="corpo-juridico" style="position: relative; top: -30px;"></div>
+
+        <!-- Rodapé com informações de contato e endereços simbólicos -->
         <div class="footer-info">
-            <span class="tag-escritorio">Morais, Mayelen & Farias</span>
-            <div class="contato-direto">
-                <span>📞 (11) 99999-9999</span>
-                <span>✉️ contato@mmfadv.com</span>
-                <!-- link rápido whatsapp (outro) -->
-                <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20informações%20sobre%20consultoria" target="_blank">WhatsApp</a>
+            <div class="copy">
+                <i class="far fa-copyright"></i> 2026 Morais, Mayelen & Farias<br>
+                <span style="font-size: 0.9rem;">São Paulo · Brasília · Porto Alegre</span>
+            </div>
+            <div class="contato-rapido">
+                <a href="https://wa.me/5511999999999" target="_blank"><i class="fab fa-whatsapp"></i> (11) 99999-9999</a>
+                <a href="#"><i class="fas fa-envelope"></i> contato@mmf.adv.br</a>
+                <a href="#"><i class="fab fa-linkedin"></i> /mmf-adv</a>
             </div>
         </div>
-
-        <!-- mini seção escondida? Não, mas adicionamos um pequeno texto de localização/cnpj (apenas estético) -->
-        <p style="color: #2b7052; font-size: 0.9rem; margin-top: 1.5rem; text-align: right; border-top: 1px dotted #3d8466; padding-top: 1rem;">
-            São Paulo · Brasília · Porto Alegre <span style="font-weight: 500;">|</span> Atendimento 100% digital
-        </p>
     </div>
 
-    <!-- elemento oculto de exemplo para simular ancoragem (caso clique no link, role suavemente até um texto simples) -->
-    <div id="equipe" style="max-width: 1100px; margin: 0 auto; background: transparent; padding: 0 1rem; scroll-margin-top: 50px;"></div>
-    <!-- script simples para suavizar clique (apenas estético, não interfere) -->
+    <!-- um pequeno script para suavizar o scroll (opcional) -->
     <script>
-        // Para dar um feedback mais elegante ao clicar em "Conheça nosso time", já que é uma landing simples sem pagina interna.
-        // Ao clicar no link com hash #equipe, mostramos um breve resumo do corpo jurídico via alerta personalizado (mas mantemos o alert original)
-        // Alteramos o onclick para algo menos invasivo? Vamos manter a simplicidade, mas o link tem preventDefault/alert.
-        // também adicionamos um pequeno efeito extra: ao clicar no botão de equipe, exibimos mensagem com nomes.
-        // (já está no onclick inline)
-    </script>
-    <!-- Caso queira um clique mais suave sem alert, descomente abaixo (mas vamos manter o alert como amostra de interação) -->
-    <!-- 
-    <script>
-        document.querySelectorAll('a[href="#equipe"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('⚖️ Corpo Jurídico:\n\n• Dra. Ana Mayelen (Trabalhista)\n• Dr. Rodrigo Morais (Cível/Contratos)\n• Dr. Felipe Farias (Empresarial)\n• Três associados e cinco colaboradores.\n\nEm breve página completa!');
-            });
-        });
-    </script> 
-    -->
-    <!-- versão sutil de aviso (apenas um modal bonito via alert mesmo) -->
-    <script>
-        // melhorando o alert com um pouco mais de informação sem bagunçar
         (function() {
-            const botaoJuridico = document.querySelector('.btn-juridico');
-            if (botaoJuridico) {
-                botaoJuridico.addEventListener('click', function(e) {
+            // rolagem suave para a âncora do corpo jurídico (já usamos no botão)
+            // e também podemos dar um feedback sutil ao clicar nos ícones
+            const linksInternos = document.querySelectorAll('a[href="#"]');
+            linksInternos.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if(link.classList.contains('btn-escritorio')) return; // já tratado
                     e.preventDefault();
-                    alert('🌟 CORPO JURÍDICO MMF 🌟\n\nSócios fundadores:\nDra. Carla Mayelen (Direito Trabalhista)\nDr. Jonas Morais (Direito Cível)\nDr. Otávio Farias (Consultoria Empresarial)\n\nAlém de 7 advogados associados e equipe de suporte.\nNossos perfis detalhados estarão disponíveis em breve no site.');
+                    // não faz nada, apenas demonstração
                 });
-            }
+            });
+
+            // Adicionar um pequeno alerta apenas para simular interação (opcional, mas sem atrapalhar)
+            // Vamos deixar de lado para manter a elegância
         })();
     </script>
+
+    <!-- dica: se quiser adicionar fotos reais, troque o <i> dentro de .foto-adv por uma tag <img> -->
 </body>
 </html>
