@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morais, Mayelen e Farias | Advocacia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #0f3b2b; /* verde escuro principal */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        /* Card principal que simula um papel pautado/textura suave */
+        .landing-card {
+            max-width: 1100px;
+            width: 100%;
+            background: #eaf4e5;   /* off-white levemente esverdeado para contraste suave */
+            border-radius: 32px;
+            box-shadow: 0 25px 40px -10px rgba(0, 20, 0, 0.7);
+            overflow: hidden;
+            padding: 2.8rem 2.5rem;
+            border: 2px solid #1d5e45;
+        }
+
+        /* elementos em verde escuro */
+        .green-dark-text {
+            color: #0f3b2b;
+        }
+
+        .title-section h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #0a2e20;
+            border-left: 8px solid #1f6e4f;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subhead {
+            color: #2b5d48;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: 0.8rem 0 2rem 1.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* Área de dois blocos principais */
+        .botoes-destaque {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2.8rem 0 2rem 0;
+            justify-content: space-between;
+        }
+
+        .card-acao {
+            flex: 1 1 250px;
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 8px 0 #1d5e45, 0 12px 20px -8px rgba(15, 59, 43, 0.3);
+            border: 1px solid #1d5e45;
+            transition: transform 0.15s ease;
+        }
+
+        .card-acao:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ícone genérico (emojis / texto) */
+        .icone-grande {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-acao h3 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #0f3b2b;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .card-acao p {
+            color: #1f4d3a;
+            margin-bottom: 1.7rem;
+            font-size: 1.1rem;
+        }
+
+        /* botão estilo whatsapp */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background-color: #25D366;  /* verde WhatsApp */
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 0.9rem 1.5rem;
+            border-radius: 60px;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0 5px 0 #128C7E, 0 8px 14px rgba(0,0,0,0.15);
+            transition: all 0.1s ease;
+            width: fit-content;
+            border: 1px solid #0f6b58;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20b859;
+            box-shadow: 0 3px 0 #128C7E, 0 8px 14px rgba(0,0,0,0.1);
+            transform: translateY(2px);
+        }
+
+        .btn-whatsapp span {
+            font-size: 1.5rem;
+        }
+
+        /* botão corpo jurídico */
+        .btn-juridico {
+            display: inline-block;
+            background-color: transparent;
+            color: #0f3b2b;
+            font-weight: 600;
+            font-size: 1.25rem;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            border: 3px solid #1d6e4f;
+            text-decoration: none;
+            box-shadow: 0 4px 0 #0a3523;
+            transition: all 0.1s ease;
+        }
+
+        .btn-juridico:hover {
+            background-color: #1d6e4f;
+            color: white;
+            border-color: #0f3b2b;
+            box-shadow: 0 2px 0 #0a3523;
+            transform: translateY(2px);
+        }
+
+        /* selo/escritório adicional */
+        .footer-info {
+            margin-top: 3rem;
+            border-top: 2px dashed #1d6e4f;
+            padding-top: 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            color: #1d5e45;
+        }
+
+        .tag-escritorio {
+            background: #1d6e4f;
+            color: #f1f9f1;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .contato-direto {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .contato-direto a {
+            color: #0f3b2b;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #1d6e4f;
+        }
+
+        .contato-direto a:hover {
+            color: #1d6e4f;
+        }
+
+        @media (max-width: 680px) {
+            .landing-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .title-section h1 {
+                font-size: 1.9rem;
+                padding-left: 1rem;
+            }
+            .card-acao h3 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-card">
+        <!-- cabeçalho com nome completo do escritório -->
+        <div class="title-section">
+            <h1>Morais, Mayelen <br>e Farias Advocacia</h1>
+            <div class="subhead">✻ Consultoria Jurídica · Ética & Resultados ✻</div>
+        </div>
+
+        <!-- dois blocos principais: whatsapp e corpo jurídico -->
+        <div class="botoes-destaque">
+            <!-- Bloco 1: Agendar atendimento (WhatsApp) -->
+            <div class="card-acao">
+                <div class="icone-grande">⚖️📲</div>
+                <h3>Atendimento<br>imediato</h3>
+                <p>Fale agora com nossa equipe e agende uma reunião virtual ou presencial. Resposta rápida e sigilosa.</p>
+                <!-- link whatsapp (número fictício) -->
+                <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20com%20a%20advocacia%20Morais%2C%20Mayelen%20e%20Farias" 
+                   class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                   <span>📱</span> Agendar via WhatsApp
+                </a>
+            </div>
+
+            <!-- Bloco 2: Conheça nosso corpo jurídico -->
+            <div class="card-acao">
+                <div class="icone-grande">👥📜</div>
+                <h3>Corpo Jurídico<br>especializado</h3>
+                <p>Conheça os sócios e colaboradores: Dra. Mayelen, Dr. Morais, Dr. Farias e equipe. Áreas trabalhista, cível, empresarial.</p>
+                <!-- link interno simbólico (apenas demonstração, ancora para uma seção fictícia) -->
+                <a href="#equipe" class="btn-juridico" onclick="alert('Página do corpo jurídico (simulação) – em breve perfil completo dos advogados.'); return false;">✦ Conheça nosso time ✦</a>
+            </div>
+        </div>
+
+        <!-- rodapé com informações de contato direto e selo de confiança -->
+        <div class="footer-info">
+            <span class="tag-escritorio">Morais, Mayelen & Farias</span>
+            <div class="contato-direto">
+                <span>📞 (11) 99999-9999</span>
+                <span>✉️ contato@mmfadv.com</span>
+                <!-- link rápido whatsapp (outro) -->
+                <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20informações%20sobre%20consultoria" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- mini seção escondida? Não, mas adicionamos um pequeno texto de localização/cnpj (apenas estético) -->
+        <p style="color: #2b7052; font-size: 0.9rem; margin-top: 1.5rem; text-align: right; border-top: 1px dotted #3d8466; padding-top: 1rem;">
+            São Paulo · Brasília · Porto Alegre <span style="font-weight: 500;">|</span> Atendimento 100% digital
+        </p>
+    </div>
+
+    <!-- elemento oculto de exemplo para simular ancoragem (caso clique no link, role suavemente até um texto simples) -->
+    <div id="equipe" style="max-width: 1100px; margin: 0 auto; background: transparent; padding: 0 1rem; scroll-margin-top: 50px;"></div>
+    <!-- script simples para suavizar clique (apenas estético, não interfere) -->
+    <script>
+        // Para dar um feedback mais elegante ao clicar em "Conheça nosso time", já que é uma landing simples sem pagina interna.
+        // Ao clicar no link com hash #equipe, mostramos um breve resumo do corpo jurídico via alerta personalizado (mas mantemos o alert original)
+        // Alteramos o onclick para algo menos invasivo? Vamos manter a simplicidade, mas o link tem preventDefault/alert.
+        // também adicionamos um pequeno efeito extra: ao clicar no botão de equipe, exibimos mensagem com nomes.
+        // (já está no onclick inline)
+    </script>
+    <!-- Caso queira um clique mais suave sem alert, descomente abaixo (mas vamos manter o alert como amostra de interação) -->
+    <!-- 
+    <script>
+        document.querySelectorAll('a[href="#equipe"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('⚖️ Corpo Jurídico:\n\n• Dra. Ana Mayelen (Trabalhista)\n• Dr. Rodrigo Morais (Cível/Contratos)\n• Dr. Felipe Farias (Empresarial)\n• Três associados e cinco colaboradores.\n\nEm breve página completa!');
+            });
+        });
+    </script> 
+    -->
+    <!-- versão sutil de aviso (apenas um modal bonito via alert mesmo) -->
+    <script>
+        // melhorando o alert com um pouco mais de informação sem bagunçar
+        (function() {
+            const botaoJuridico = document.querySelector('.btn-juridico');
+            if (botaoJuridico) {
+                botaoJuridico.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('🌟 CORPO JURÍDICO MMF 🌟\n\nSócios fundadores:\nDra. Carla Mayelen (Direito Trabalhista)\nDr. Jonas Morais (Direito Cível)\nDr. Otávio Farias (Consultoria Empresarial)\n\nAlém de 7 advogados associados e equipe de suporte.\nNossos perfis detalhados estarão disponíveis em breve no site.');
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
