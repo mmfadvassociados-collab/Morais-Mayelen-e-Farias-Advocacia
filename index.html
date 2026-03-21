@@ -5,12 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Morais, Mayelen e Farias Advocacia</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-    margin: 0;
     font-family: 'Inter', sans-serif;
-    background-color: #0f3d3b;
-    color: #ffffff;
+    background: #0f3d3b;
+    color: #fff;
 }
 
 header {
@@ -20,27 +22,52 @@ header {
     padding: 20px 60px;
 }
 
+header h1 {
+    font-family: 'Playfair Display', serif;
+    color: #d4c097;
+    font-size: 20px;
+}
+
 nav a {
     margin-left: 25px;
     text-decoration: none;
     color: #d4c097;
-    font-weight: 500;
 }
 
 .hero {
-    text-align: center;
-    padding: 100px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 60px;
+    gap: 40px;
 }
 
-.hero h1 {
+.hero-text {
+    max-width: 500px;
+}
+
+.hero h2 {
     font-family: 'Playfair Display', serif;
     font-size: 48px;
     color: #d4c097;
 }
 
 .hero p {
-    margin-top: 15px;
-    font-size: 18px;
+    margin: 20px 0;
+}
+
+.btn {
+    background: #d4c097;
+    color: #0f3d3b;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.hero img {
+    width: 350px;
+    border-radius: 12px;
 }
 
 .section {
@@ -48,9 +75,9 @@ nav a {
 }
 
 .section h2 {
+    text-align: center;
     font-family: 'Playfair Display', serif;
     color: #d4c097;
-    text-align: center;
     margin-bottom: 50px;
 }
 
@@ -65,28 +92,40 @@ nav a {
     background: #124c49;
     padding: 30px;
     border-radius: 12px;
-    width: 280px;
+    width: 260px;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
 .card h3 {
     color: #d4c097;
+    margin-bottom: 10px;
+}
+
+.cta {
+    text-align: center;
+    padding: 60px;
 }
 
 .footer {
     text-align: center;
     padding: 30px;
     font-size: 14px;
-    color: #ccc;
 }
 
+@media(max-width: 900px){
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+}
 </style>
 </head>
+
 <body>
 
 <header>
-    <div><strong>MMF Advocacia</strong></div>
+    <h1>MMF Advocacia</h1>
     <nav>
         <a href="#">Início</a>
         <a href="#areas">Áreas</a>
@@ -96,8 +135,12 @@ nav a {
 </header>
 
 <section class="hero">
-    <h1>Advocacia e Consultoria Jurídica</h1>
-    <p>Excelência, estratégia e compromisso com resultados.</p>
+    <div class="hero-text">
+        <h2>Morais, Mayelen e Farias</h2>
+        <p>Advocacia e Consultoria Jurídica com atendimento estratégico e personalizado.</p>
+        <a href="#contato" class="btn">Agende uma Consulta</a>
+    </div>
+    <img src="https://via.placeholder.com/350" alt="Advogada">
 </section>
 
 <section class="section" id="equipe">
@@ -105,15 +148,15 @@ nav a {
     <div class="cards">
         <div class="card">
             <h3>Dra. Nayla Morais</h3>
-            <p>Advogada especializada com atuação estratégica e atendimento personalizado.</p>
+            <p>Atuação estratégica e foco em resultados.</p>
         </div>
         <div class="card">
             <h3>Dra. Débora Mayelen</h3>
-            <p>Experiência em demandas jurídicas complexas, com foco em soluções eficazes.</p>
+            <p>Experiência em demandas complexas.</p>
         </div>
         <div class="card">
             <h3>Dra. Vanessa Farias Nogueira</h3>
-            <p>Atuação dedicada com compromisso ético e excelência na defesa dos clientes.</p>
+            <p>Compromisso ético e excelência jurídica.</p>
         </div>
     </div>
 </section>
@@ -123,30 +166,23 @@ nav a {
     <div class="cards">
         <div class="card">
             <h3>Direito Previdenciário</h3>
-            <p>Atuação em benefícios do INSS, aposentadorias e pensões.</p>
         </div>
         <div class="card">
             <h3>Direito Civil</h3>
-            <p>Contratos, responsabilidade civil e demandas patrimoniais.</p>
         </div>
         <div class="card">
             <h3>Direito Trabalhista</h3>
-            <p>Defesa de direitos trabalhistas e atuação em reclamações judiciais.</p>
         </div>
         <div class="card">
             <h3>Direito Tributário</h3>
-            <p>Planejamento tributário e defesa em execuções fiscais.</p>
         </div>
     </div>
 </section>
 
-<section class="section" id="contato">
-    <h2>Contato</h2>
-    <div style="text-align:center;">
-        <p>Entre em contato para agendar uma consulta.</p>
-        <p>Email: contato@mmfadvocacia.com</p>
-        <p>Telefone: (00) 00000-0000</p>
-    </div>
+<section class="cta" id="contato">
+    <h2>Precisa de ajuda jurídica?</h2>
+    <p>Entre em contato e agende sua consulta.</p>
+    <a href="#" class="btn">Falar no WhatsApp</a>
 </section>
 
 <footer class="footer">
